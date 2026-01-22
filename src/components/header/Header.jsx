@@ -1,113 +1,32 @@
 import React, { useState } from "react";
-import "./header.css";
+import { NAV_LINKS } from "../../constants/data";
+import { motion } from "framer-motion";
 
 const Header = () => {
-  // Change Background Header
-  window.addEventListener("scroll", function () {
-    const header = document.querySelector(".header");
-    if (this.scrollY >= 80) {
-      header.classList.add("scroll-header");
-    } else {
-      header.classList.remove("scroll-header");
-    }
-  });
-  // Toogle Menu
-  const [Toogle, showMenu] = useState(false);
-  const [activeNav, setActiveNav] = useState("#home");
+    const [activeNav, setActiveNav] = useState("#home");
 
-  return (
-    <header className="header">
-      <nav className="nav container">
-        <a href="index.html" className="nav__logo">
-          Ameer
-        </a>
-        <div className={Toogle ? "nav__menu show-menu" : "nav__menu"}>
-          <ul className="nav__list grid">
-            <li className="nav__item">
-              <a
-                href="#home"
-                onClick={() => setActiveNav("#home")}
-                className={
-                  activeNav === "#home" ? "nav__link active-link" : "nav__link"
-                }
-              >
-                <i className="uil uil-estate nav__icon"></i> Home
-              </a>
-            </li>
-
-            <li className="nav__item">
-              <a
-                href="#about"
-                onClick={() => setActiveNav("#about")}
-                className={
-                  activeNav === "#about" ? "nav__link active" : "nav__link"
-                }
-              >
-                <i className="uil uil-user nav__icon"></i> About
-              </a>
-            </li>
-
-            <li className="nav__item">
-              <a
-                href="#skills"
-                onClick={() => setActiveNav("#skills")}
-                className={
-                  activeNav === "#skills" ? "nav__link active" : "nav__link"
-                }
-              >
-                <i className="uil uil-file-alt nav__icon"></i> Skills
-              </a>
-            </li>
-
-            <li className="nav__item">
-              <a
-                href="#services"
-                onClick={() => setActiveNav("#services")}
-                className={
-                  activeNav === "#services" ? "nav__link active" : "nav__link"
-                }
-              >
-                <i className="uil uil-briefcase-alt nav__icon"></i> Services
-              </a>
-            </li>
-
-            <li className="nav__item">
-              <a
-                href="#portfolio"
-                onClick={() => setActiveNav("#portfolio")}
-                className={
-                  activeNav === "#portfolio" ? "nav__link active" : "nav__link"
-                }
-              >
-                <i className="uil uil-scenery nav__icon"></i> Portfolio
-              </a>
-            </li>
-
-            <li className="nav__item">
-              <a
-                href="#contact"
-                onClick={() => setActiveNav("#contact")}
-                className={
-                  activeNav === "#contact" ? "nav__link active" : "nav__link"
-                }
-              >
-                <i className="uil uil-message nav__icon"></i> Contact
-              </a>
-            </li>
-          </ul>
-
-          <i
-            className="uil uil-times nav__close"
-            onClick={() => showMenu(!Toogle)}
-          ></i>
-        </div>
-
-        <div className="nav__toogle" onClick={() => showMenu(!Toogle)}>
-          <i className="uil uil-apps"></i>
-        </div>
-      </nav>
-    </header>
-  );
+    return (
+        <header className="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-50 w-full max-w-max px-4">
+            <nav className="bg-white/70 backdrop-blur-md border border-white/40 shadow-xl rounded-full px-4 md:px-6 py-3 flex gap-4 md:gap-8 items-center justify-between supports-[backdrop-filter]:bg-white/60">
+                {NAV_LINKS.map((link) => (
+                    <a 
+                        key={link.name} 
+                        href={link.href} 
+                        className={`relative text-xl md:text-2xl text-slate-500 hover:text-slate-900 transition-colors flex flex-col items-center gap-1 p-2 ${activeNav === link.href ? "text-slate-900" : ""}`}
+                        onClick={() => setActiveNav(link.href)}
+                    >
+                        <i className={link.icon}></i>
+                        {activeNav === link.href && (
+                             <motion.span 
+                                layoutId="nav-dot"
+                                className="absolute -bottom-1 w-1 h-1 bg-slate-900 rounded-full"
+                             />
+                        )}
+                    </a>
+                ))}
+            </nav>
+        </header>
+    );
 };
 
 export default Header;

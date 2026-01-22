@@ -1,175 +1,75 @@
 import React, { useState } from "react";
-import "./qualification.css";
+import { QUALIFICATIONS } from "../../constants/data";
 
 const Qualification = () => {
-  const [toggleState, setToggleState] = useState(1);
+  const [toggleState, setToggleState] = useState(1); // 1 = Education, 2 = Experience
 
-  const toggleTab = (index) => {
-    setToggleState(index);
-  };
   return (
-    <section className="qualification section" id="portfolio">
-      <h2 className="section__title">Qualification</h2>
-      <span className="section__subtitle">My Academic Journey</span>
+    <section className="py-20 px-4 bg-slate-50" id="portfolio">
+        <div className="container mx-auto">
+            <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Qualification</h2>
+                <span className="text-slate-500">My Academic Journey</span>
+            </div>
 
-      <div className="qualification__container container">
-        <div className="qualification__tabs">
-          <div
-            className={
-              toggleState === 1
-                ? "qualification__button qualification__active button--flex"
-                : "qualification__button button--flex"
-            }
-            onClick={() => {
-              toggleTab(1);
-            }}
-          >
-            <i className="uil uil-graduation-cap qualification__icon"></i>
-            Education
-          </div>
-          <div
-            className={
-              toggleState === 2
-                ? "qualification__button qualification__active button--flex"
-                : "qualification__button button--flex"
-            }
-            onClick={() => {
-              toggleTab(2);
-            }}
-          >
-            <i className="uil uil-briefcase-alt qualification__icon"></i>
-            Experience
-          </div>
+            <div className="max-w-2xl mx-auto">
+                <div className="flex justify-center gap-8 mb-12">
+                    <button 
+                        className={`text-xl font-medium flex items-center gap-2 transition-colors ${toggleState === 1 ? "text-slate-900" : "text-slate-400"}`}
+                        onClick={() => setToggleState(1)}
+                    >
+                        <i className="uil uil-graduation-cap text-2xl"></i>
+                        Education
+                    </button>
+                    <button 
+                        className={`text-xl font-medium flex items-center gap-2 transition-colors ${toggleState === 2 ? "text-slate-900" : "text-slate-400"}`}
+                        onClick={() => setToggleState(2)}
+                    >
+                        <i className="uil uil-briefcase-alt text-2xl"></i>
+                        Experience
+                    </button>
+                </div>
+
+                <div className="relative">
+                    {/* Central Line */}
+                    <div className="absolute left-1/2 -ml-[1px] w-[2px] h-full bg-slate-200"></div>
+
+                    {toggleState === 1 && QUALIFICATIONS.education.map((item, idx) => (
+                        <div key={idx} className={`flex justify-between items-center mb-8 ${idx % 2 === 1 ? "flex-row-reverse" : ""}`}>
+                            <div className={`w-[45%] ${idx % 2 === 1 ? "text-left" : "text-right"}`}>
+                                <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
+                                <span className="block text-sm text-slate-500 mb-2">{item.subtitle}</span>
+                                <div className={`text-xs text-slate-400 flex items-center gap-1 ${idx % 2 === 1 ? "" : "justify-end"}`}>
+                                    <i className="uil uil-calendar-alt"></i>
+                                    {item.calendar}
+                                </div>
+                            </div>
+                            
+                            <div className="relative z-10 w-3 h-3 bg-slate-900 rounded-full border-4 border-slate-100 shadow-sm"></div>
+                            
+                            <div className="w-[45%]"></div>
+                        </div>
+                    ))}
+
+                    {toggleState === 2 && QUALIFICATIONS.experience.map((item, idx) => (
+                        <div key={idx} className={`flex justify-between items-center mb-8 ${idx % 2 === 1 ? "flex-row-reverse" : ""}`}>
+                           <div className={`w-[45%] ${idx % 2 === 1 ? "text-left" : "text-right"}`}>
+                                <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
+                                <span className="block text-sm text-slate-500 mb-2">{item.subtitle}</span>
+                                <div className={`text-xs text-slate-400 flex items-center gap-1 ${idx % 2 === 1 ? "" : "justify-end"}`}>
+                                    <i className="uil uil-calendar-alt"></i>
+                                    {item.calendar}
+                                </div>
+                            </div>
+                            
+                            <div className="relative z-10 w-3 h-3 bg-slate-900 rounded-full border-4 border-slate-100 shadow-sm"></div>
+                            
+                            <div className="w-[45%]"></div>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
-        <div className="qualification__sections">
-          <div
-            className={
-              toggleState === 1
-                ? "qualification__content qualification__content-active"
-                : "qualification__content"
-            }
-          >
-            {/* Masters */}
-            <div className="qualification__data">
-              <div>
-                <h3 className="qualification__title">
-                  Master's of Business Infromation System
-                </h3>
-                <span className="qualification__subtitle">
-                  Australian Institute of Higher Education
-                </span>
-                <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> 2022 - Present
-                </div>
-              </div>
-              <div>
-                <span className="qualification__rounder"></span>
-                <span className="qualification__line"></span>
-              </div>
-            </div>
-            {/* Bachelors */}
-            <div className="qualification__data">
-              <div></div>
-              <div>
-                <span className="qualification__rounder"></span>
-                <span className="qualification__line"></span>
-              </div>
-              <div>
-                <h3 className="qualification__title">
-                  Bachelors in Computer Science and Information Technology
-                </h3>
-                <span className="qualification__subtitle">
-                  Tribhuvan University - Nepal
-                </span>
-                <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> 2016 - 2020
-                </div>
-              </div>
-            </div>
-            {/* +2 */}
-            <div className="qualification__data">
-              <div>
-                <h3 className="qualification__title">
-                  Higher Secondary School - Science
-                </h3>
-                <span className="qualification__subtitle">HSEB - Nepal</span>
-                <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> 2012 - 2014
-                </div>
-              </div>
-              <div>
-                <span className="qualification__rounder"></span>
-                <span className="qualification__line"></span>
-              </div>
-            </div>
-            <div className="qualification__data">
-              <div></div>
-              <div>
-                <span className="qualification__rounder"></span>
-              </div>
-            </div>
-          </div>
-          <div
-            className={
-              toggleState === 2
-                ? "qualification__content qualification__content-active"
-                : "qualification__content"
-            }
-          >
-            {/* SQM */}
-            <div className="qualification__data">
-              <div>
-                <h3 className="qualification__title">Full Stack Developer</h3>
-                <span className="qualification__subtitle">SQM Research</span>
-                <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> 2023 - Present
-                </div>
-              </div>
-              <div>
-                <span className="qualification__rounder"></span>
-                <span className="qualification__line"></span>
-              </div>
-            </div>
-            {/* Zillicom */}
-            <div className="qualification__data">
-              <div></div>
-              <div>
-                <span className="qualification__rounder"></span>
-                <span className="qualification__line"></span>
-              </div>
-              <div>
-                <h3 className="qualification__title">
-                  Laravel (Backend) Developer
-                </h3>
-                <span className="qualification__subtitle">Zillicom.com</span>
-                <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> 2020 - 2022
-                </div>
-              </div>
-            </div>
-            {/* Kite Nepal */}
-            <div className="qualification__data">
-              <div>
-                <h3 className="qualification__title">Laravel Developer</h3>
-                <span className="qualification__subtitle">Kite Nepal</span>
-                <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> 2019 - 2020
-                </div>
-              </div>
-              <div>
-                <span className="qualification__rounder"></span>
-                <span className="qualification__line"></span>
-              </div>
-            </div>
-            <div className="qualification__data">
-              <div></div>
-              <div>
-                <span className="qualification__rounder"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
   );
 };
