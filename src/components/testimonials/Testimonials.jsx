@@ -1,6 +1,5 @@
 import React from "react";
-import "./testimonials.css";
-import Data from "./Data";
+import { TESTIMONIALS } from "../../constants/data";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -13,44 +12,43 @@ import { Pagination } from "swiper/modules";
 
 const Testimonials = () => {
   return (
-    <section className="testimonials container section" id="testimonials">
-      <h2 className="section__title">My Clients Says</h2>
-      <span className="section__subtitle">Testimonials</span>
+    <section className="py-20 px-4 bg-white" id="testimonials">
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">My Clients Say</h2>
+            <span className="text-slate-500">Testimonials</span>
+        </div>
 
-      <Swiper
-        className="testimonials__container"
-        loop={true}
-        grabCursor={true}
-        spaceBetween={24}
-        pagination={{
-          clickable: true,
-        }}
-        breakpoints={{
-          576: {
-            slidesPerView: 1,
-            spaceBetween: 50,
-          },
-          768: {
-            slidesPerView: 1,
-            spaceBetween: 50,
-          },
-          992: {
-            slidesPerView: 1,
-            spaceBetween: 100,
-          },
-        }}
-        modules={[Pagination]}
-      >
-        {Data.map(({ id, image, title, description }) => {
-          return (
-            <SwiperSlide className="testimonials__card" key={id}>
-              <img src={image} alt="" className="testimonials__img" />
-              <h3 className="testimonials__name">{title}</h3>
-              <p className="testimonials__description">{description}</p>
+        <Swiper
+          className="pb-16"
+          loop={true}
+          grabCursor={true}
+          spaceBetween={24}
+          pagination={{
+            clickable: true,
+            bulletActiveClass: 'swiper-pagination-bullet-active bg-slate-900',
+          }}
+          breakpoints={{
+            576: {
+              slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 48,
+            },
+          }}
+          modules={[Pagination]}
+        >
+          {TESTIMONIALS.map(({ id, image, title, description }) => (
+            <SwiperSlide key={id} className="h-auto">
+                <div className="bg-slate-50 border border-slate-100 p-8 rounded-[2rem] h-full flex flex-col items-center text-center">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2">{title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed max-w-sm italic">"{description}"</p>
+                </div>
             </SwiperSlide>
-          );
-        })}
-      </Swiper>
+          ))}
+        </Swiper>
+      </div>
     </section>
   );
 };

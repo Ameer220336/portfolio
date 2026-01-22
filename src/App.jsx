@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import Header from "./components/header/Header";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
@@ -13,9 +12,9 @@ import ScrollUp from "./components/scrollup/ScrollUp";
 
 function App() {
   return (
-    <>
+    <div className="bg-slate-50 min-h-screen">
       <Header />
-      <main className="main">
+      <main>
         <Home />
         <About />
         <Skills />
@@ -26,7 +25,7 @@ function App() {
       </main>
       <Footer />
       <ScrollUp />
-    </>
+    </div>
   );
 }
 

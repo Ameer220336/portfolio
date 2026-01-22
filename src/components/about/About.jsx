@@ -1,54 +1,48 @@
 import React from "react";
-import "./about.css";
-import AboutImg from "../../assets/about.jpg";
-import CV from "../../assets/Ameer Resume.pdf";
-import Info from "./Info";
+import { PERSONAL_INFO, ABOUT_STATS } from "../../constants/data";
+import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <section className="about section" id="about">
-      <h2 className="section__title">About Me</h2>
-      <span className="section__subtitle">My Introduction</span>
+    <section className="py-20 px-4 bg-white" id="about">
+      <div className="container mx-auto">
+        <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+        >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">About Me</h2>
+            <span className="text-slate-500">My Introduction</span>
+        </motion.div>
 
-      <div className="about__container container grid">
-        <img src={AboutImg} alt="" className="about__img" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="flex justify-center">
+                <img src={PERSONAL_INFO.aboutImg} alt="About" className="rounded-3xl shadow-lg w-full max-w-sm object-cover" />
+            </div>
 
-        <div className="about__data">
-          <Info />
+            <div>
+                <div className="grid grid-cols-3 gap-4 mb-8">
+                    {ABOUT_STATS.map((stat, idx) => (
+                        <div key={idx} className="bg-white border border-slate-200 p-4 rounded-xl text-center shadow-sm hover:shadow-md transition-shadow">
+                            <i className={`${stat.icon} text-2xl text-slate-700 mb-2 block`}></i>
+                            <h3 className="font-semibold text-slate-900">{stat.title}</h3>
+                            <span className="text-xs text-slate-500">{stat.subtitle}</span>
+                        </div>
+                    ))}
+                </div>
 
-          <p className="about__description">
-            Full Stack Developer, I create Web Applications with UI/UX
-            interfaces, I have years of experience and many projects with happy
-            clients.
-          </p>
-          <a download="" href={CV} className="button button--flex">
-            Download CV
-            <svg
-              class="button__icon"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                d="M15.25 22.7502H9.25C3.82 22.7502 1.5 20.4302 1.5 15.0002V9.00024C1.5 3.57024 3.82 1.25024 9.25 1.25024H14.25C14.66 1.25024 15 1.59024 15 2.00024C15 2.41024 14.66 2.75024 14.25 2.75024H9.25C4.64 2.75024 3 4.39024 3 9.00024V15.0002C3 19.6102 4.64 21.2502 9.25 21.2502H15.25C19.86 21.2502 21.5 19.6102 21.5 15.0002V10.0002C21.5 9.59024 21.84 9.25024 22.25 9.25024C22.66 9.25024 23 9.59024 23 10.0002V15.0002C23 20.4302 20.68 22.7502 15.25 22.7502Z"
-                fill="var(--container-color)"
-              ></path>
-              <path
-                d="M22.25 10.7502H18.25C14.83 10.7502 13.5 9.42023 13.5 6.00023V2.00023C13.5 1.70023 13.68 1.42023 13.96 1.31023C14.24 1.19023 14.56 1.26023 14.78 1.47023L22.78 9.47023C22.99 9.68023 23.06 10.0102 22.94 10.2902C22.82 10.5702 22.55 10.7502 22.25 10.7502ZM15 3.81023V6.00023C15 8.58023 15.67 9.25023 18.25 9.25023H20.44L15 3.81023Z"
-                fill="var(--container-color)"
-              ></path>
-              <path
-                d="M13.25 13.7502H7.25C6.84 13.7502 6.5 13.4102 6.5 13.0002C6.5 12.5902 6.84 12.2502 7.25 12.2502H13.25C13.66 12.2502 14 12.5902 14 13.0002C14 13.4102 13.66 13.7502 13.25 13.7502Z"
-                fill="var(--container-color)"
-              ></path>
-              <path
-                d="M11.25 17.7502H7.25C6.84 17.7502 6.5 17.4102 6.5 17.0002C6.5 16.5902 6.84 16.2502 7.25 16.2502H11.25C11.66 16.2502 12 16.5902 12 17.0002C12 17.4102 11.66 17.7502 11.25 17.7502Z"
-                fill="var(--container-color)"
-              ></path>
-            </svg>
-          </a>
+                <p className="text-slate-600 leading-relaxed mb-8 text-center md:text-left">
+                    {PERSONAL_INFO.aboutDescription}
+                </p>
+
+                <div className="flex justify-center md:justify-start">
+                    <a href={PERSONAL_INFO.cv} download className="inline-flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-xl hover:bg-slate-800 transition-colors">
+                        Download CV
+                        <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
+                    </a>
+                </div>
+            </div>
         </div>
       </div>
     </section>

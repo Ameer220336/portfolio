@@ -1,231 +1,76 @@
 import React, { useState } from "react";
-import "./services.css";
+import { SERVICES } from "../../constants/data";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Services = () => {
-  const [toggleState, setToggleState] = useState(0);
+  const [selectedService, setSelectedService] = useState(null);
 
-  const toggleTab = (index) => {
-    setToggleState(index);
-  };
   return (
-    <section className="services section" id="services">
-      <h2 className="section__title">Services</h2>
-      <span className="section__subtitle">What I Offer</span>
-
-      <div className="services__container container grid">
-        {/* Software Engineer */}
-        <div className="services__content">
-          <div>
-            <i className="uil uil-web-grid services__icon"></i>
-            <h3 className="services__title">
-              Software <br /> Engineer
-            </h3>
-          </div>
-
-          <span
-            className="services__button"
-            onClick={() => {
-              toggleTab(1);
-            }}
-          >
-            View More
-            <i className="uil uil-arrow-right services__button-icon"></i>
-          </span>
-
-          <div
-            className={
-              toggleState === 1
-                ? "services__modal active-modal"
-                : "services__modal"
-            }
-          >
-            <div className="services__modal-content">
-              <i
-                className="uil uil-times services__modal-close"
-                onClick={() => {
-                  toggleTab(0);
-                }}
-              ></i>
-
-              <h3 className="services__modal-title">Software Engineer</h3>
-              <p className="services__modal-description">
-                Service with more than 3 years of experience. Providing Quality
-                of Products to Clients and Companies.
-              </p>
-
-              <ul className="services__modal-services grid">
-                <li className="services__modal-services">
-                  <i className="uil uil-check-circle services__modal-icon"></i>
-                  <p className="services__modal-info">
-                    Web Application Development.
-                  </p>
-                </li>
-                <li className="services__modal-services">
-                  <i className="uil uil-check-circle services__modal-icon"></i>
-                  <p className="services__modal-info">Database Management.</p>
-                </li>
-                <li className="services__modal-services">
-                  <i className="uil uil-check-circle services__modal-icon"></i>
-                  <p className="services__modal-info">
-                    System Architecture Development.
-                  </p>
-                </li>
-                <li className="services__modal-services">
-                  <i className="uil uil-check-circle services__modal-icon"></i>
-                  <p className="services__modal-info">
-                    UX Element Interaction.
-                  </p>
-                </li>
-                <li className="services__modal-services">
-                  <i className="uil uil-check-circle services__modal-icon"></i>
-                  <p className="services__modal-info">System Analysis.</p>
-                </li>
-                <li className="services__modal-services">
-                  <i className="uil uil-check-circle services__modal-icon"></i>
-                  <p className="services__modal-info">
-                    Business Process Analysis.
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </div>
+    <section className="py-20 px-4 bg-white" id="services">
+      <div className="container mx-auto">
+        <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Services</h2>
+            <span className="text-slate-500">What I Offer</span>
         </div>
-        {/* Web App Developer */}
-        <div className="services__content">
-          <div>
-            <i className="uil uil-arrow services__icon"></i>
-            <h3 className="services__title">
-              Web App <br /> Developer
-            </h3>
-          </div>
 
-          <span
-            className="services__button"
-            onClick={() => {
-              toggleTab(2);
-            }}
-          >
-            View More
-            <i className="uil uil-arrow-right services__button-icon"></i>
-          </span>
-
-          <div
-            className={
-              toggleState === 2
-                ? "services__modal active-modal"
-                : "services__modal"
-            }
-          >
-            <div className="services__modal-content">
-              <i
-                className="uil uil-times services__modal-close"
-                onClick={() => {
-                  toggleTab(0);
-                }}
-              ></i>
-
-              <h3 className="services__modal-title">Web App Developer</h3>
-              <p className="services__modal-description">
-                Service with more than 3 years of experience. Providing Quality
-                of Products to Clients and Companies.
-              </p>
-
-              <ul className="services__modal-services grid">
-                <li className="services__modal-services">
-                  <i className="uil uil-check-circle services__modal-icon"></i>
-                  <p className="services__modal-info">
-                    Web Application Development.
-                  </p>
-                </li>
-                <li className="services__modal-services">
-                  <i className="uil uil-check-circle services__modal-icon"></i>
-                  <p className="services__modal-info">HTML/CSS/JS.</p>
-                </li>
-                <li className="services__modal-services">
-                  <i className="uil uil-check-circle services__modal-icon"></i>
-                  <p className="services__modal-info">
-                    PHP/Python/Laravel/MySQL.
-                  </p>
-                </li>
-                <li className="services__modal-services">
-                  <i className="uil uil-check-circle services__modal-icon"></i>
-                  <p className="services__modal-info">
-                    AJAX/REACT/JQuery/Bootstrap.
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center">
+            {SERVICES.map((service, idx) => (
+                <div key={idx} className="bg-white border border-slate-100 p-8 pt-16 rounded-[2rem] shadow-sm relative group hover:shadow-lg transition-all duration-300">
+                    <div className="absolute top-8 left-8">
+                         <i className={`${service.icon} text-3xl text-slate-900`}></i>
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-800 mb-4">{service.title}</h3>
+                    <button 
+                        onClick={() => setSelectedService(service)}
+                        className="text-sm text-slate-500 flex items-center gap-1 group-hover:text-slate-900 transition-colors cursor-pointer"
+                    >
+                        View More 
+                        <i className="uil uil-arrow-right list-none group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+            ))}
         </div>
-        {/* Business Analyst */}
-        <div className="services__content">
-          <div>
-            <i className="uil uil-edit services__icon"></i>
-            <h3 className="services__title">
-              Business <br /> Analyst
-            </h3>
-          </div>
 
-          <span
-            className="services__button"
-            onClick={() => {
-              toggleTab(3);
-            }}
-          >
-            View More
-            <i className="uil uil-arrow-right services__button-icon"></i>
-          </span>
+        <AnimatePresence>
+            {selectedService && (
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+                    onClick={() => setSelectedService(null)}
+                >
+                    <motion.div 
+                        initial={{ scale: 0.9, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0.9, opacity: 0 }}
+                        onClick={(e) => e.stopPropagation()}
+                        className="bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl"
+                    >
+                        <button 
+                            onClick={() => setSelectedService(null)}
+                            className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 transition-colors"
+                        >
+                            <i className="uil uil-times text-2xl"></i>
+                        </button>
 
-          <div
-            className={
-              toggleState === 3
-                ? "services__modal active-modal"
-                : "services__modal"
-            }
-          >
-            <div className="services__modal-content">
-              <i
-                className="uil uil-times services__modal-close"
-                onClick={() => {
-                  toggleTab(0);
-                }}
-              ></i>
+                        <h3 className="text-2xl font-bold text-slate-900 mb-4 text-center">{selectedService.title}</h3>
+                        <p className="text-slate-500 text-center mb-8 text-sm">
+                            {selectedService.description}
+                        </p>
 
-              <h3 className="services__modal-title">Business Analyst</h3>
-              <p className="services__modal-description">
-                Engaged in Master's of Business Infomration System course at
-                Australian Institute of higher education.
-              </p>
-
-              <ul className="services__modal-services grid">
-                <li className="services__modal-services">
-                  <i className="uil uil-check-circle services__modal-icon"></i>
-                  <p className="services__modal-info">Business Analytics.</p>
-                </li>
-                <li className="services__modal-services">
-                  <i className="uil uil-check-circle services__modal-icon"></i>
-                  <p className="services__modal-info">System Analysis.</p>
-                </li>
-                <li className="services__modal-services">
-                  <i className="uil uil-check-circle services__modal-icon"></i>
-                  <p className="services__modal-info">
-                    Business Process Modeling.
-                  </p>
-                </li>
-                <li className="services__modal-services">
-                  <i className="uil uil-check-circle services__modal-icon"></i>
-                  <p className="services__modal-info">Project Management.</p>
-                </li>
-                <li className="services__modal-services">
-                  <i className="uil uil-check-circle services__modal-icon"></i>
-                  <p className="services__modal-info">
-                    Strategic Information Management.
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+                        <ul className="space-y-3">
+                            {selectedService.points.map((point, i) => (
+                                <li key={i} className="flex gap-3 text-sm text-slate-700">
+                                    <i className="uil uil-check-circle text-lg text-slate-900"></i>
+                                    <p>{point}</p>
+                                </li>
+                            ))}
+                        </ul>
+                    </motion.div>
+                </motion.div>
+            )}
+        </AnimatePresence>
       </div>
     </section>
   );
