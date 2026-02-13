@@ -52,55 +52,65 @@ export const ABOUT_STATS = [
 
 export const SKILLS = {
     frontend: [
-        { name: "HTML", level: "Advance" },
-        { name: "CSS", level: "Basic" },
-        { name: "Bootstrap", level: "Intermediate" },
-        { name: "Javascript", level: "Intermediate" },
-        { name: "GIT", level: "Intermediate" },
-        { name: "React", level: "Intermediate" },
+        { name: "HTML", level: "Expertise" },
+        { name: "CSS", level: "Intermediate" },
+        { name: "Bootstrap", level: "Expertise" },
+        { name: "Tailwind", level: "Intermediate" },
+        { name: "Javascript", level: "Advance" },
+        { name: "GIT", level: "Advance" },
+        { name: "React", level: "Advance" },
         { name: "Vue JS", level: "Intermediate" },
-        { name: "NEST JS", level: "Intermediate" },
         { name: "NEXT JS", level: "Intermediate" },
     ],
     backend: [
-        { name: "PHP", level: "Advance" },
-        { name: "Python", level: "Basic" },
-        { name: "Laravel", level: "Advance" },
-        { name: "My SQL", level: "Advance" },
-        { name: "RESTful API", level: "Intermediate" },
-        { name: "AJAX", level: "Intermediate" },
+        { name: "PHP", level: "Expertise" },
+        { name: "Laravel", level: "Expertise" },
+        { name: "My SQL", level: "Expertise" },
+        { name: "Postgres", level: "Intermediate" },
+        { name: "RESTful API", level: "Expertise" },
+        { name: "AJAX", level: "Expertise" },
+        { name: "NEST JS", level: "Intermediate" },
+        { name: "Python", level: "Intermediate" },
+        { name: "AWS", level: "Intermediate" },
+        { name: "Docker", level: "Intermediate" },
     ],
+    // AI: [
+    //     { name: "Claude Code CLI", level: "Intermediate" },
+    //     { name: "GPT-5-Codex", level: "Intermediate" },
+    //     { name: "Gemini Pro CLI", level: "Intermediate" },
+    //     { name: "Gemini Pro CLI", level: "Intermediate" },
+    // ],
 };
 
 export const SERVICES = [
     {
-        title: "Software Engineer",
+        title: "Software Engineering",
         description:
-            "Service with more than 3 years of experience. Providing Quality of Products to Clients and Companies.",
+            "Service with more than 5 years of experience. Providing Quality of Products to Clients and Companies",
         points: [
-            "Web Application Development.",
-            "Database Management.",
-            "System Architecture Development.",
-            "UX Element Interaction.",
-            "System Analysis.",
-            "Business Process Analysis.",
+            "Web Application Developments",
+            "AI Integrations",
+            "Data Visualization Dashboards",
+            "System Developments",
+            "UI/UX Enhancements",
         ],
         icon: "uil uil-web-grid",
     },
     {
-        title: "Web App Developer",
+        title: "Web App Developement",
         description:
-            "Service with more than 3 years of experience. Providing Quality of Products to Clients and Companies.",
+            "Service with more than 5 years of experience. Providing Quality of Products to Clients and Companies.",
         points: [
-            "Web Application Development.",
-            "HTML/CSS/JS.",
-            "PHP/Python/Laravel/MySQL.",
-            "AJAX/REACT/JQuery/Bootstrap.",
+            "HTML/CSS/JS",
+            "PHP/Python/Laravel/NEST",
+            "REACT/NEXT/JQuery/Bootstrap/Tailwind",
+            "MySQL/PostgreSQL",
+            "AWS/Docker",
         ],
         icon: "uil uil-arrow",
     },
     {
-        title: "Business Analyst",
+        title: "Business Analysis",
         description:
             "Engaged in Master's of Business Infomration System course at Australian Institute of higher education.",
         points: [
@@ -111,6 +121,33 @@ export const SERVICES = [
             "Strategic Information Management.",
         ],
         icon: "uil uil-edit",
+    },
+];
+
+export const PROJECTS = [
+    {
+        title: "AI-Powered NEPSE Portfolio Tracker",
+        description:
+            "Real-time stock analysis platform featuring AI-driven investment insights, automated web scraping, and dynamic profit reporting.",
+        tech: ["Python", "Laravel", "MySQL", "OpenAI", "Scrapy"],
+        liveUrl: "",
+        sourceUrl: "",
+    },
+    {
+        title: "Domain Performance Analytics",
+        description:
+            "Scalable monitoring solution for domain SEO metrics, built with a high-performance NestJS API and a reactive Vue 3 frontend.",
+        tech: ["NestJS", "Vue 3", "PostgreSQL", "REST API"],
+        liveUrl: "https://domain-ranking.ameer.com.np/",
+        sourceUrl: "https://github.com/Ameerbajracharya/domain-ranking-app",
+    },
+    {
+        title: "Live Gold & Silver Tracker (Nepal)",
+        description:
+            "Real-time Gold & Silver Price History dashboard with interactive price visualization.",
+        tech: ["React 19", "Vite", "PHP", "Tailwind"],
+        liveUrl: "https://www.bajracharyajyaasa.com.np/",
+        sourceUrl: "#",
     },
 ];
 
@@ -154,24 +191,18 @@ export const QUALIFICATIONS = {
 export const TESTIMONIALS = [
     {
         id: 1,
-        image: "https://zillicom.com/storage/teams/1608544846100538764_1153040085060473_4684079173965185024_o.jpg", // Local fallback: Testimonial1
         title: "Uttam K.C.",
-        description:
-            "Really Great Job, all projects aspects were being followed as instructions provided.",
+        description:"Really Great Job, all projects aspects were being followed as instructions provided.",
     },
     {
         id: 2,
-        image: "https://zillicom.com/storage/teams/1611039572132896124_3546755625372257_4441453274890941305_o.jpg", // Local fallback: Testimonial2
         title: "Sushant Sigdel",
-        description:
-            "Great Team Player, Hard Working, Dedicated towards goals.",
+        description:"Great Team Player, Hard Working, Dedicated towards goals.",
     },
     {
         id: 3,
-        image: "https://zillicom.com/storage/teams/1608545607103610654_3239513492766204_209846512416942743_n.jpg", // Local fallback: Testimonial3
         title: "Santosh Budathoki",
-        description:
-            "Co-operative, Helpful, and really great colleague to have.",
+        description:"Co-operative, Helpful, and really great colleague to have.",
     },
 ];
 
