@@ -182,7 +182,7 @@ const About = () => {
                   animate={isInView ? { scale: 1 } : { scale: 0.5 }}
                   transition={{ delay: 0.1, type: "spring" }}
                 >
-                  <AnimatedCounter value="5" suffix="+" />
+                  <AnimatedCounter value="6" suffix="+" />
                 </motion.div>
                 <p className="text-zinc-400 text-sm">Years Experience</p>
                 <i className="bx bx-award text-3xl text-accent/30 mt-4" />
@@ -202,7 +202,7 @@ const About = () => {
                 >
                   <AnimatedCounter value="12" suffix="+" />
                 </motion.div>
-                <p className="text-zinc-400 text-sm">Systems Built</p>
+                <p className="text-zinc-400 text-sm">Systems Build & Automated</p>
                 <i className="bx bx-briefcase-alt text-3xl text-accent/30 mt-4" />
               </div>
             </TiltCard>
