@@ -114,7 +114,7 @@ const Home = () => {
 
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-dark-900"
+      className="relative min-h-screen flex items-start lg:items-center justify-center overflow-hidden bg-dark-900 pt-28 sm:pt-32 lg:pt-0"
       id="home"
     >
       {/* Grid Background */}
@@ -134,7 +134,7 @@ const Home = () => {
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Text Content */}
-          <div className="order-2 lg:order-1 text-center lg:text-left pt-16 md:pt-0">
+          <div className="order-2 lg:order-1 text-center lg:text-left pt-8 sm:pt-10 lg:pt-0">
             {/* Main Title */}
             <motion.div variants={itemVariants}>
               <InteractiveTitle>
@@ -231,7 +231,7 @@ const Home = () => {
           {/* Image Content */}
           <motion.div
             variants={itemVariants}
-            className="order-1 lg:order-2 flex justify-center relative"
+            className="order-1 lg:order-2 flex justify-center relative mt-2 sm:mt-4 lg:mt-0"
           >
             <div className="relative">
               {/* Animated Morphing Border - Background Layer */}
